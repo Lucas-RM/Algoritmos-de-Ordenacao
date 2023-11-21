@@ -32,8 +32,8 @@ void imprimirVetor(int *vetor, int tamanho)
 
 int main()
 {
-    int tamanhoVetor = 10;                         // Insira aqui o tamanho (1000, 5000, etc...)
-    int vetor[] = {9, 5, 2, 7, 1, 8, 3, 6, 10, 4}; // Insira aqui os dados
+    int tamanhoVetor = 1000; // Insira aqui o tamanho (1000, 5000, etc...)
+    int vetor[] = {};        // Insira aqui os dados
     int trocas = 0;
     clock_t inicio, fim;
     double tempo;

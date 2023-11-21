@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void merge(int arr[], int l, int m, int r, unsigned long long *total_trocas)
+void merge(int arr[], int l, int m, int r, int *total_trocas)
 {
     int VetorA, VetorB, VetorC;
     int n1 = m - l + 1;
@@ -49,7 +49,7 @@ void merge(int arr[], int l, int m, int r, unsigned long long *total_trocas)
     }
 }
 
-void mergeSort(int arr[], int l, int r, unsigned long long *total_trocas)
+void mergeSort(int arr[], int l, int r, int *total_trocas)
 {
     if (l < r)
     {
@@ -71,37 +71,27 @@ void printArray(int arr[], int size)
 
 int main()
 {
-    int size = 1000;          // Insira aqui o tamanho (1000, 5000, etc...)
-    int lista_valores[] = {}; // Insira aqui os dados
-    int dados[size];
-
-    for (int i = 0; i < size; i++)
-    {
-        if (i < sizeof(lista_valores) / sizeof(lista_valores[0]))
-        {
-            dados[i] = lista_valores[i];
-        }
-        else
-        {
-            dados[i] = 0;
-        }
-    }
-
-    unsigned long long total_trocas = 0;
-
+    int size = 1000;  // Insira aqui o tamanho (1000, 5000, etc...)
+    int vetor[] = {}; // Insira aqui os dados
+    int trocas = 0;
     clock_t start_time, end_time;
     double total_time;
 
+    printf("Vetor antes da ordenacao\n");
+    printArray(vetor, size);
+
     start_time = clock();
-    mergeSort(dados, 0, size - 1, &total_trocas);
+    mergeSort(vetor, 0, size - 1, &trocas);
     end_time = clock();
 
+    printf("\n\nVetor ordenado\n");
+    printArray(vetor, size);
+
+    printf("inicio: %f", (double)start_time);
+    printf("fim: %f", (double)end_time);
+
     total_time = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
-
-    printf("Números Ordenados:\n\n ");
-    printArray(dados, size);
-
-    printf("\nQuantidade total de trocas: %llu\n", total_trocas);
+    printf("\n\nNumero de trocas realizadas: %d\n", trocas);
     printf("Tempo levado: %f segundos\n", total_time);
 
     return 0;
